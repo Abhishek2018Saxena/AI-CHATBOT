@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Chatbot</title>
+</head>
+
+<body>
+
+<h2>AI Chatbot</h2>a
+
+<input id="text" type="text" placeholder="Type message">
+<button onclick="send()">Send</button>
+
+<p id="reply"></p>
+
+<script>
+function send() {
+let message = document.getElementById("text").value;
+
+fetch("/get", {
+method: "POST",
+body: new URLSearchParams({msg: message})
+})
+.then(response => response.text())
+.then(data => {
+document.getElementById("reply").innerText = data;
+});
+}
+</script>
+
+</body>
+</html>
